@@ -1,5 +1,10 @@
+#dir
 .import/
+
+#files
+*.js
+*.js.map
+**/*.jsx
+**/*.jsx.map
 export.cfg
 export_presets.cfg
-decorators.js
-decorators.js.map
