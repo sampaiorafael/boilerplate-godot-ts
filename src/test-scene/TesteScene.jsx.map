@@ -1,0 +1,1 @@
+{"version":3,"file":"TesteScene.jsx","sourceRoot":"./","sources":["src/test-scene/TesteScene.tsx"],"names":[],"mappings":";;;;;;AAAA,OAAO,EAAoB,IAAI,EAAiB,MAAM,kBAAkB,CAAC;AAGzE,IAAqB,SAAS,GAA9B,MAAqB,SAAU,SAAQ,KAAK,CAAC,MAAM;IAE/C,MAAM,CAAE,KAAU;IAElB,CAAC;IAEJ,MAAM;IACH,CAAC;IAGD,QAAQ,CAAE,KAAK;IACf,CAAC;CAEJ,CAAA;AAboB,SAAS;IAD7B,IAAI,CAAC,2CAA2C;GAC5B,SAAS,CAa7B;eAboB,SAAS"}
