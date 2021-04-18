@@ -19,6 +19,10 @@ config/name="Boilerplate-ts"
 run/main_scene="res://src/test-scene/test-scene.tscn"
 config/icon="res://icon.png"
 
+[debug]
+
+settings/fps/force_fps=20
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
