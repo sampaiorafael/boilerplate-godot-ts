@@ -3,24 +3,34 @@ import { signal, property, tool, onready, node } from '../../../decorators';
 @tool // make the script runnable in godot editor
 export default class InputLine extends godot.ProgressBar {
 
+    public progressBarVal: number = 0
+
+    public increaseProgressBar (): void {
+
+        if (this.get_value() >= 100 )
+            this.progressBarVal = 0
+        
+        this.set_value(this.progressBarVal)     
+    }
+
+    public progressBarConfigs (step: number, percentVisible: boolean): void {
+        this.set_percent_visible(percentVisible) // this.percent_visible = true
+        this.set_step(step) // this.step = 10
+    }
+
     _input (event: any): void {
 
     }
     
 	_ready (): void {
-        this.step = 1
+        this.progressBarConfigs(1, true)
     }
 
-    public progressBarVal: number = 0
+    _process (delta: any): void {
 
-    _process (delta): void {
-        this.progressBarVal += 0.5
-
-        if (this.progressBarVal >= 100) {
-            this.progressBarVal = 0
-        }
-
-        this.value = this.progressBarVal
+        // Auto Increase
+        this.increaseProgressBar()
+        this.progressBarVal += 1
 
     }
 
