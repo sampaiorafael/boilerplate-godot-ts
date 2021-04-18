@@ -8,7 +8,7 @@ import { tool } from '../../../decorators';
 let InputLine = class InputLine extends godot.ProgressBar {
     constructor() {
         super(...arguments);
-        this.progressBarVal = 0;
+        this.g_progressBarVal = 1;
     }
     /**
      * if actual progress bar value >= 100, reset this.progresBarval to 0
@@ -17,26 +17,30 @@ let InputLine = class InputLine extends godot.ProgressBar {
      */
     increaseProgressBar() {
         if (this.get_value() >= 100)
-            this.progressBarVal = 0;
-        this.set_value(this.progressBarVal);
+            this.g_progressBarVal = 0;
+        this.set_value(this.g_progressBarVal); // this.value = 10
     }
     /**
      * @param step step value of progressbar progress
      * @param percentVisible progressbar percent visibility
+     * @return void
      */
-    progressBarConfigs(step, percentVisible) {
+    progressBarConfigs(step, percentVisible, initialVal) {
         this.set_percent_visible(percentVisible); // this.percent_visible = true
         this.set_step(step); // this.step = 10
+        this.set_value(0);
     }
-    _input(event) {
+    _on_Button1_pressed() {
+        this.increaseProgressBar();
+        this.g_progressBarVal += 1;
     }
     _ready() {
-        this.progressBarConfigs(1, true);
+        this.progressBarConfigs(1, true, 0);
     }
     _process(delta) {
         // Auto Increase
-        this.increaseProgressBar();
-        this.progressBarVal += 1;
+        // this.increaseProgressBar()
+        // this.g_progressBarVal += 0.2
     }
 };
 InputLine = __decorate([

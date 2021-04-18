@@ -3,7 +3,7 @@ import { signal, property, tool, onready, node } from '../../../decorators';
 @tool // make the script runnable in godot editor
 export default class InputLine extends godot.ProgressBar {
 
-    public progressBarVal: number = 0
+    public g_progressBarVal: number = 1
 
     /**
      * if actual progress bar value >= 100, reset this.progresBarval to 0
@@ -13,33 +13,36 @@ export default class InputLine extends godot.ProgressBar {
     public increaseProgressBar (): void {
 
         if (this.get_value() >= 100 )
-            this.progressBarVal = 0
-        
-        this.set_value(this.progressBarVal)     
+            this.g_progressBarVal = 0
+
+        this.set_value(this.g_progressBarVal) // this.value = 10
     }
 
     /**
      * @param step step value of progressbar progress
      * @param percentVisible progressbar percent visibility
+     * @return void
      */
-    public progressBarConfigs (step: number, percentVisible: boolean): void {
+    public progressBarConfigs (step: number, percentVisible: boolean, initialVal: number): void {
         this.set_percent_visible(percentVisible) // this.percent_visible = true
         this.set_step(step) // this.step = 10
+        this.set_value(0)
     }
 
-    _input (event: any): void {
-
+    public _on_Button1_pressed () {
+        this.increaseProgressBar()
+        this.g_progressBarVal += 1
     }
-    
+
 	_ready (): void {
-        this.progressBarConfigs(1, true)
+        this.progressBarConfigs(1, true, 0)
     }
 
-    _process (delta: any): void {
+    _process (delta: any) {
 
         // Auto Increase
-        this.increaseProgressBar()
-        this.progressBarVal += 1
+        // this.increaseProgressBar()
+        // this.g_progressBarVal += 0.2
 
     }
 
