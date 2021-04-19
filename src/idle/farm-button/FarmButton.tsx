@@ -10,17 +10,11 @@ export default class FarmButton extends godot.Button {
         this.set_disabled(false)
     }
     
-	_ready (): void {
-
-    }
-
     _process (delta): void {
-
         if (this.is_pressed()){
             this.emit_signal('click')
             this.set_disabled(true)
         }
-
     } 
 
 }
