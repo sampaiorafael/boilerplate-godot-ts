@@ -8,9 +8,11 @@ export default class IdleScene extends godot.Node2D {
     }
     
 	_ready (): void {
+        
     }
 
     _process (delta): void {
+
     }
 
 }

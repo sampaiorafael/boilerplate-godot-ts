@@ -1,5 +1,5 @@
 import { signal, property, tool, onready, node } from '../../../decorators';
-
+import Global from '../global/Global'
 @tool
 export default class GoldLabel extends godot.Label {
 
@@ -11,13 +11,16 @@ export default class GoldLabel extends godot.Label {
         this.set_text(txt)
     }
 
+    _on_mineprogress_complete (goldValue: any) {
+        
+    }
+
 	_ready (): void {
         this.g_configs('0')
     }
 
     _process (delta): void {
-        
+        this.g_setText(`${Global.getPlayerGold}`)
     }
-
 
 }
