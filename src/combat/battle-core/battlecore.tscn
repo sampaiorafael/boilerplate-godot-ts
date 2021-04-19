@@ -6,9 +6,11 @@
 
 [node name="Battle" type="Node2D"]
 script = ExtResource( 1 )
+g_state = 1
 
 [node name="Player" type="Node2D" parent="."]
 script = ExtResource( 2 )
 
 [node name="Enemy" type="Node2D" parent="."]
 script = ExtResource( 3 )
+name = "Enemy"

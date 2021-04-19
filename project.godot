@@ -16,12 +16,13 @@ _global_script_class_icons={
 [application]
 
 config/name="Boilerplate-ts"
-run/main_scene="res://src/test-scene/test-scene.tscn"
+run/main_scene="res://src/idle/idle-scene.tscn"
 config/icon="res://icon.png"
 
-[debug]
+[display]
 
-settings/fps/force_fps=20
+window/size/width=720
+window/size/height=480
 
 [rendering]
 

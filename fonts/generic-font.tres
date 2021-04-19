@@ -1,6 +1,3 @@
-[gd_resource type="DynamicFontData" format=2]
+[gd_resource type="DynamicFont" format=2]
 
 [resource]
-resource_local_to_scene = true
-hinting = 1
-font_path = "res://fonts/AlegreyaSans-Bold.ttf"

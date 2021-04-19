@@ -3,7 +3,7 @@
 [ext_resource path="res://src/test-scene/TesteScene.jsx" type="Script" id=1]
 [ext_resource path="res://src/test-scene/progressbar/ProgressBar.jsx" type="Script" id=2]
 [ext_resource path="res://src/test-scene/button1/button1.jsx" type="Script" id=3]
-[ext_resource path="res://fonts/kkkkkkkkkkkkkkkkk.tres" type="DynamicFont" id=4]
+[ext_resource path="res://fonts/generic-font.tres" type="DynamicFont" id=4]
 [ext_resource path="res://src/test-scene/moneyLabel/moneyLabel.jsx" type="Script" id=5]
 
 [node name="test-scene" type="Node2D"]
@@ -24,9 +24,6 @@ margin_right = 222
 margin_bottom = 544
 text = "Hit"
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="."]
 margin_left = 247
@@ -34,12 +31,10 @@ margin_top = 24
 margin_right = 593
 margin_bottom = 153
 custom_fonts/font = ExtResource( 4 )
-text = "GOLD = 50"
+text = "Money = 0"
 align = 1
 valign = 1
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[connection signal="complete" from="ProgressBar" to="Label" method="_on_ProgressBar_complete"]
 [connection signal="pressed" from="Button1" to="Button1" method="_on_Button1_pressed"]
 [connection signal="pressed" from="Button1" to="ProgressBar" method="_on_Button1_pressed"]

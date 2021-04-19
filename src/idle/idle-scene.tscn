@@ -29,29 +29,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="mine-progress" type="ProgressBar" parent="."]
-margin_left = 24.6432
-margin_top = 494.881
-margin_right = 536.643
-margin_bottom = 572.881
-step = 0.01
-allow_greater = true
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="farm-button-interval" type="Timer" parent="."]
+wait_time = 0.1
+script = ExtResource( 8 )
 
-[node name="Sprite" type="Sprite" parent="."]
-use_parent_material = true
-position = Vector2( 936.66, 61.1633 )
-scale = Vector2( 0.297219, 0.249811 )
-texture = ExtResource( 3 )
+[node name="mine-progress" type="ProgressBar" parent="."]
+margin_left = 90.5697
+margin_top = 363.028
+margin_right = 602.57
+margin_bottom = 441.028
+step = 0.01
+script = ExtResource( 4 )
 
 [node name="gold-label" type="Label" parent="."]
-margin_left = 320.921
-margin_top = 33.8195
-margin_right = 830.921
-margin_bottom = 105.819
+margin_left = 9.72046
+margin_top = 37.5993
+margin_right = 519.72
+margin_bottom = 109.6
 custom_fonts/font = SubResource( 1 )
 text = "0"
 align = 2
@@ -60,7 +54,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="farm-button-interval" type="Timer" parent="."]
-script = ExtResource( 8 )
+[node name="Sprite" type="Sprite" parent="."]
+use_parent_material = true
+position = Vector2( 617.592, 70.6877 )
+scale = Vector2( 0.297219, 0.249811 )
+texture = ExtResource( 3 )
 [connection signal="click" from="farm-button" to="mine-progress" method="_on_farmbutton_click"]
 [connection signal="timeout" from="farm-button-interval" to="farm-button" method="_on_farmbuttoninterval_timeout"]
+[connection signal="complete" from="mine-progress" to="gold-label" method="_on_mineprogress_complete"]
