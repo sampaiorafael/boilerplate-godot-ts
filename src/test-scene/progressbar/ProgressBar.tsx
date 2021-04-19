@@ -31,14 +31,22 @@ export default class InputLine extends godot.ProgressBar {
 
     public _on_Button1_pressed () {
         this.increaseProgressBar()
-        this.g_progressBarVal += 1
+        this.g_progressBarVal += 10
     }
+
+    @signal
+    public readonly complete: string
 
 	_ready (): void {
         this.progressBarConfigs(1, true, 0)
     }
 
     _process (delta: any) {
+
+        if (this.g_progressBarVal >= 100) {
+            console.log('Should emmit')
+            this.emit_signal('complete')
+        }
 
         // Auto Increase
         // this.increaseProgressBar()
