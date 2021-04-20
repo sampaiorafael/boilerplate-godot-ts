@@ -7,6 +7,10 @@ export default class MineProgress extends godot.ProgressBar {
     @signal
     public readonly complete: string
 
+    public g_on_workerTimer_timeout (): void {
+        this.set_value(this.get_value() + 1)
+    }
+
     public g_configs (step: number, initialVal: number, percentVisible: boolean): void {
         this.set_percent_visible(percentVisible)
         this.set_step(step) 

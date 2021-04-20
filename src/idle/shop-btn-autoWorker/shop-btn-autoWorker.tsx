@@ -8,15 +8,14 @@ export default class ShopBtnAutoWorker extends godot.Button {
     public g_workerCount: number = 0
     public g_workerStrength: number = 1
 
-    public g_on_workerTimer_timeout (): void {
-        console.log('hi')
-    }
+    @onready('../mine-progress')
+    progressBar: godot.ProgressBar
 
     _ready (): void {
         this.add_child(this.g_workerTimer)
         this.g_workerTimer.set_wait_time(3)
         this.g_workerTimer.start()
-        this.g_workerTimer.connect('timeout', this, 'g_on_workerTimer_timeout')
+        this.g_workerTimer.connect('timeout', this.progressBar, 'g_on_workerTimer_timeout')
     }
 
     _process (delta): void {
