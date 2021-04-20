@@ -11,10 +11,6 @@ export default class GoldLabel extends godot.Label {
         this.set_text(txt)
     }
 
-    _on_mineprogress_complete (goldValue: any) {
-        
-    }
-
 	_ready (): void {
         this.g_configs('0')
     }

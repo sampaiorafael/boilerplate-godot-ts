@@ -4,9 +4,6 @@ import Global from '../global/Global'
 @tool
 export default class MineProgress extends godot.ProgressBar {
 
-    @signal
-    public readonly complete: string
-
     public g_on_workerTimer_timeout (): void {
         this.set_value(this.get_value() + 1)
     }
@@ -19,7 +16,6 @@ export default class MineProgress extends godot.ProgressBar {
 
     public g_resetValueOnMax (): void {
         if (this.get_value() >= 100){
-            this.emit_signal('complete', '28', 10)
             this.set_value(0)
             Global.setPlayerGold = Global.getPlayerGold + 10
         }  
