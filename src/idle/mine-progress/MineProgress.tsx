@@ -1,5 +1,4 @@
 import { signal, property, tool, onready, node } from '../../../decorators';
-
 import Global from '../global/Global'
 
 @tool
@@ -24,7 +23,7 @@ export default class MineProgress extends godot.ProgressBar {
 
     public _on_farmbutton_click (): void {
         this.g_resetValueOnMax()
-        this.set_value(this.get_value() + 10)
+        this.set_value(this.get_value() + Global.getFarmStrength)
     }
     
 	_ready (): void {
