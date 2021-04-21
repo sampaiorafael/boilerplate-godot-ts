@@ -1,7 +1,13 @@
 export default {
 
+    NodePath: {
+        ManualFarm: '/ManualFarm',
+        ShopAutoWorker: '/Shop-AutoWorker',
+        ShopManualStrength: '/Shop-ManualStrength'
+    },
+
     Player: {
-        initialGold: 0
+        initialGold: 500
     },
 
     ProgressBar: {
@@ -19,7 +25,7 @@ export default {
         initialPrice: 5,
         initialStrength: 1,
         initialCount: 0,
-        speed: 1 // Seconds
+        initialSpeed: 0.1 // Seconds
     },
 
     ButtonDisable: {

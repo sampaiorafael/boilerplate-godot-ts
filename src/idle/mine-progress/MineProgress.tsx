@@ -31,8 +31,8 @@ export default class MineProgress extends godot.ProgressBar {
     }
     
 	_ready (): void {
-        this.$('../ManualFarm').connect('g_manual_increase', this, 'g_on_manual_increase')
-        this.$('../Shop-AutoWorker').connect('g_auto_worker_increase', this, 'g_on_auto_worker_increase')
+        this.$(`..${Configs.NodePath.ManualFarm}`).connect('g_manual_increase', this, 'g_on_manual_increase')
+        this.$(`..${Configs.NodePath.ShopAutoWorker}`).connect('g_auto_worker_increase', this, 'g_on_auto_worker_increase')
         this.g_configs()
     }
 

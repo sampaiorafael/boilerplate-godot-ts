@@ -23,7 +23,7 @@ export default class ShopAutoWorker extends godot.Button {
 
     _ready (): void {
         this.add_child(this.g_timer)
-        this.g_timer.set_wait_time(1)
+        this.g_timer.set_wait_time(Configs.AutoWorker.initialSpeed)
         this.g_timer.start()
         this.g_timer.connect('timeout', this, 'g_on_timeout')
     }

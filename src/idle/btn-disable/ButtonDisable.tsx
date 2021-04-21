@@ -15,9 +15,9 @@ export default class ButtonDisable extends godot.Timer {
 
     _ready (): void {
 
-        this.g_node_manual_farm = this.$('../ManualFarm') as godot.Button
-        this.g_node_shop_auto_worker = this.$('../Shop-AutoWorker') as godot.Button
-        this.g_node_shop_manual_strength = this.$('../Shop-ManualStrength') as godot.Button
+        this.g_node_manual_farm = this.$(`..${Configs.NodePath.ManualFarm}`) as godot.Button
+        this.g_node_shop_auto_worker = this.$(`..${Configs.NodePath.ShopAutoWorker}`) as godot.Button
+        this.g_node_shop_manual_strength = this.$(`..${Configs.NodePath.ShopManualStrength}`) as godot.Button
 
         this.set_wait_time(Configs.ButtonDisable.speed)
         this.start() 
