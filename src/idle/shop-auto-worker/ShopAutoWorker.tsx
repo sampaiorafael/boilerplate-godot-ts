@@ -5,7 +5,7 @@ import Global from '../global/Global'
 export default class ShopAutoWorker extends godot.Button {
 
     @signal
-    public readonly g_autoWorkerIncrease: string
+    public readonly g_auto_worker_increase: string
 
     public g_price: number = Configs.AutoWorker.initialPrice
     public g_count: number = Configs.AutoWorker.initialCount
@@ -16,9 +16,9 @@ export default class ShopAutoWorker extends godot.Button {
         this.emit_signal('g_autoWorkerIncrease', this.g_count * this.g_strength)
     } 
 
-    public g_newWorker () {
+    public g_buy_new_worker () {
         this.g_count += 1
-        Global.setPlayerGold = Global.getPlayerGold - this.g_price
+        Global.set_player_gold = Global.get_player_gold - this.g_price
     }
 
     _ready (): void {
@@ -29,9 +29,9 @@ export default class ShopAutoWorker extends godot.Button {
     }
 
     _process (delta): void {
-        if (this.is_pressed() && Global.getPlayerGold >= this.g_price){
+        if (this.is_pressed() && Global.get_player_gold >= this.g_price){
             this.set_disabled(true)
-            this.g_newWorker()
+            this.g_buy_new_worker()
         }
     } 
 

@@ -2,14 +2,14 @@ import Configs from '../configs/configs'
 
 export default class global extends godot.Node {
 
-	private static playerGold: number = Configs.Player.initialGold
+	private static player_gold: number = Configs.Player.initialGold
 
-	static get getPlayerGold() {
-		return global.playerGold
+	static get get_player_gold() {
+		return global.player_gold
 	}
 
-	static set setPlayerGold (value: number) {
-		global.playerGold = value
+	static set set_player_gold (value: number) {
+		global.player_gold = value
 	}
 
 	constructor() {
