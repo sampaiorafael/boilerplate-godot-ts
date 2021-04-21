@@ -17,7 +17,7 @@ export default {
     },
 
     ButtonDisable: {
-        speed: 0.1
+        speed: 0.1 // Seconds
     }
 
 };

@@ -3,7 +3,7 @@ import Configs from '../configs/configs'
 export default class ManualFarm extends godot.Button {
 
     @signal
-    public readonly manualIncrease: string
+    public readonly g_manualIncrease: string
 
     public static g_strength: number = Configs.ManualFarm.initialStrength
 
@@ -17,7 +17,7 @@ export default class ManualFarm extends godot.Button {
     
     _process (delta): void {
         if (this.is_pressed()){
-            this.emit_signal('manualIncrease', ManualFarm.g_strength)
+            this.emit_signal('g_manualIncrease', ManualFarm.g_strength)
             this.set_disabled(true)
         }
     } 

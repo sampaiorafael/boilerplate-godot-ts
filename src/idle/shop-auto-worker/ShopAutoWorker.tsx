@@ -5,7 +5,7 @@ import Global from '../global/Global'
 export default class ShopAutoWorker extends godot.Button {
 
     @signal
-    public readonly autoWorkerIncrease: string
+    public readonly g_autoWorkerIncrease: string
 
     public g_price: number = Configs.AutoWorker.initialPrice
     public g_count: number = Configs.AutoWorker.initialCount
@@ -13,7 +13,7 @@ export default class ShopAutoWorker extends godot.Button {
     public g_timer: godot.Timer = new godot.Timer()
 
     public g_on_timeout (): void {
-        this.emit_signal('autoWorkerIncrease', this.g_count * this.g_strength)
+        this.emit_signal('g_autoWorkerIncrease', this.g_count * this.g_strength)
     } 
 
     public g_newWorker () {
