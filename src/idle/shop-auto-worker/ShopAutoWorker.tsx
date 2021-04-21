@@ -13,7 +13,7 @@ export default class ShopAutoWorker extends godot.Button {
     public g_timer: godot.Timer = new godot.Timer()
 
     public g_on_timeout (): void {
-        this.emit_signal('g_autoWorkerIncrease', this.g_count * this.g_strength)
+        this.emit_signal('g_auto_worker_increase', this.g_count * this.g_strength)
     } 
 
     public g_buy_new_worker () {
