@@ -4,6 +4,7 @@ export default {
         ManualFarm: '/ManualFarm',
         ShopAutoWorker: '/Shop-AutoWorker',
         ShopManualStrength: '/Shop-ManualStrength',
+        ShopDoubleSTR: '/Shop-DoubleSTR',
         ProgressBar: '/VSplitContainer/ProgressBar',
         ProgressBarLabel: '/VSplitContainer/Label'
     },
@@ -27,7 +28,7 @@ export default {
         initialPrice: 5,
         initialStrength: 1,
         initialCount: 0,
-        initialSpeed: 0.1 // Seconds
+        initialSpeed: 1 // Seconds
     },
 
     ButtonDisable: {

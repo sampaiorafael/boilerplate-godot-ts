@@ -3,8 +3,8 @@ import Configs from '../configs/configs'
 import Global from '../global/Global'
 
 export default class ProgressBar extends godot.ProgressBar {
-    
-    public g_on_manual_increase (value: number): void {this.g_increase_progress(value * 1)}
+
+    public g_on_manual_increase (value: number): void {this.g_increase_progress(value)}
     public g_on_auto_worker_increase (value: number): void {this.g_increase_progress(value)}
 
     public g_configs (): void {
@@ -27,12 +27,12 @@ export default class ProgressBar extends godot.ProgressBar {
     }
 
     public g_update_player_gold (value: number): void {
-        Global.set_player_gold = Global.get_player_gold + value
+        Global.g_set_player_gold = Global.g_get_player_gold + value
     }
     
 	_ready (): void {
-        this.$(`../../${Configs.NodePath.ManualFarm}`).connect('g_manual_increase', this, 'g_on_manual_increase')
-        this.$(`../../${Configs.NodePath.ShopAutoWorker}`).connect('g_auto_worker_increase', this, 'g_on_auto_worker_increase')
+        this.$(`../..${Configs.NodePath.ManualFarm}`).connect('g_manual_increase', this, 'g_on_manual_increase')
+        this.$(`../..${Configs.NodePath.ShopAutoWorker}`).connect('g_auto_worker_increase', this, 'g_on_auto_worker_increase')
         this.g_configs()
     }
 

@@ -1,28 +1,45 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/idle/manual-farm/ManualFarm.jsx" type="Script" id=1]
 [ext_resource path="res://assets/picareta.png" type="Texture" id=2]
 [ext_resource path="res://assets/gold-bars.png" type="Texture" id=3]
-[ext_resource path="res://src/idle/mine-progress/MineProgress.jsx" type="Script" id=4]
+[ext_resource path="res://src/idle/progress-bar/ProgressBar.jsx" type="Script" id=4]
 [ext_resource path="res://src/idle/gold-label/GoldLabel.jsx" type="Script" id=5]
 [ext_resource path="res://fonts/AlegreyaSans-Black.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://src/idle/shop-manual-strength/ShopManualStrength.jsx" type="Script" id=7]
 [ext_resource path="res://src/idle/btn-disable/ButtonDisable.jsx" type="Script" id=8]
 [ext_resource path="res://src/idle/shop-auto-worker/ShopAutoWorker.jsx" type="Script" id=9]
+[ext_resource path="res://src/idle/progress-bar-label/ProgressBarLabel.jsx" type="Script" id=10]
+[ext_resource path="res://src/idle/shop-double-str/ShopDoubleSTR.jsx" type="Script" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
 font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.156863, 1, 1, 0.298039 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0, 0, 0, 1 )
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+expand_margin_bottom = 5.0
 
 [node name="idle-scene" type="Node2D"]
 
 [node name="ManualFarm" type="Button" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 16.0833
-margin_top = 18.5171
-margin_right = 173.083
-margin_bottom = 163.517
+margin_left = 16.0
+margin_top = 19.0
+margin_right = 121.0
+margin_bottom = 118.0
 icon = ExtResource( 2 )
 flat = true
 expand_icon = true
@@ -31,25 +48,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="mine-progress" type="ProgressBar" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 35.0
-margin_top = 360.0
-margin_right = 428.0
-margin_bottom = 460.0
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Button-disable" type="Timer" parent="."]
+wait_time = 0.1
+script = ExtResource( 8 )
 
 [node name="gold-label" type="Label" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 448.394
-margin_top = 46.5866
-margin_right = 529.394
-margin_bottom = 118.587
+margin_left = 363.0
+margin_top = 18.0
+margin_right = 600.0
+margin_bottom = 90.0
 custom_fonts/font = SubResource( 1 )
 text = "0"
 align = 2
@@ -60,17 +67,15 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="."]
 use_parent_material = true
-position = Vector2( 621.257, 75.6877 )
-scale = Vector2( 0.297219, 0.249811 )
+position = Vector2( 659.646, 49.139 )
+scale = Vector2( 0.188705, 0.175156 )
 texture = ExtResource( 3 )
 
 [node name="Shop-ManualStrength" type="Button" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 556.597
-margin_top = 148.997
-margin_right = 684.597
-margin_bottom = 168.997
+margin_left = 378.404
+margin_top = 197.362
+margin_right = 712.404
+margin_bottom = 217.362
 text = "+1 STR = 10G"
 script = ExtResource( 7 )
 __meta__ = {
@@ -78,16 +83,58 @@ __meta__ = {
 }
 
 [node name="Shop-AutoWorker" type="Button" parent="."]
-margin_left = 555.0
-margin_top = 178.0
-margin_right = 686.0
-margin_bottom = 198.0
+margin_left = 378.404
+margin_top = 227.598
+margin_right = 712.404
+margin_bottom = 247.598
 text = "AutoWorker = 50G"
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button-disable" type="Timer" parent="."]
-wait_time = 0.1
-script = ExtResource( 8 )
+[node name="Shop-DoubleSTR" type="Button" parent="."]
+margin_left = 378.0
+margin_top = 262.0
+margin_right = 713.0
+margin_bottom = 284.0
+text = "Double AutoWorker STR = 100G"
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSplitContainer" type="VSplitContainer" parent="."]
+margin_left = 9.0
+margin_top = 344.0
+margin_right = 709.0
+margin_bottom = 470.0
+dragger_visibility = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VSplitContainer"]
+margin_right = 700.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 700, 0 )
+text = "50/500"
+align = 1
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="VSplitContainer"]
+margin_top = 26.0
+margin_right = 700.0
+margin_bottom = 126.0
+rect_min_size = Vector2( 700, 100 )
+size_flags_horizontal = 15
+size_flags_vertical = 15
+size_flags_stretch_ratio = 2.0
+custom_styles/bg = SubResource( 2 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

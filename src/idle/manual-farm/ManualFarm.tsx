@@ -5,9 +5,10 @@ export default class ManualFarm extends godot.Button {
     @signal
     public readonly g_manual_increase: string
 
+    //Global
     public static g_strength: number = Configs.ManualFarm.initialStrength
-    static set set_manual_farm_strength (value: number) {ManualFarm.g_strength = value}
-    static get get_manual_farm_strength (): number {return ManualFarm.g_strength}
+    static set g_set_manual_farm_strength (value: number) {ManualFarm.g_strength = value}
+    static get g_get_manual_farm_strength (): number {return ManualFarm.g_strength}
     
     _process (delta): void {
         if (this.is_pressed()){

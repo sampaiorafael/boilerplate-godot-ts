@@ -7,7 +7,7 @@ export default class GoldLabel extends godot.Label {
     }
 
     _process (delta): void {
-        this.g_set_text(`${Global.get_player_gold}`)
+        this.g_set_text(`${Global.g_get_player_gold}`)
     }
 
 }
