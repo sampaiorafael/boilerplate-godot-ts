@@ -14,8 +14,9 @@ export default class MineProgress extends godot.ProgressBar {
     }
 
     public g_reset_value_on_max (): void {
-        if (this.get_value() >= 100){
+        if (this.get_value() >= this.get_max()){
             this.set_value(0)
+            this.set_max(this.get_max() + 10)
             this.g_update_player_gold(10)
         }  
     }
