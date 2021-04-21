@@ -3,7 +3,9 @@ export default {
     NodePath: {
         ManualFarm: '/ManualFarm',
         ShopAutoWorker: '/Shop-AutoWorker',
-        ShopManualStrength: '/Shop-ManualStrength'
+        ShopManualStrength: '/Shop-ManualStrength',
+        ProgressBar: '/VSplitContainer/ProgressBar',
+        ProgressBarLabel: '/VSplitContainer/Label'
     },
 
     Player: {
