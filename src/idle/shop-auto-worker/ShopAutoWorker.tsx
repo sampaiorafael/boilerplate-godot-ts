@@ -1,4 +1,5 @@
 import { signal, property, tool, onready, node, gdclass } from '../../../decorators';
+import Configs from '../configs/configs'
 import Global from '../global/Global'
 
 export default class ShopAutoWorker extends godot.Button {
@@ -6,16 +7,16 @@ export default class ShopAutoWorker extends godot.Button {
     @signal
     public readonly autoWorkerIncrease: string
 
-    public g_price: number = 50
-    public g_count: number = 0
-    public g_strength: number = 1
+    public g_price: number = Configs.AutoWorker.initialPrice
+    public g_count: number = Configs.AutoWorker.initialCount
+    public g_strength: number = Configs.AutoWorker.initialStrength
     public g_timer: godot.Timer = new godot.Timer()
 
     public g_on_timeout (): void {
         this.emit_signal('autoWorkerIncrease', this.g_count * this.g_strength)
     } 
 
-    public g_buyNewWorker () {
+    public g_newWorker () {
         this.g_count += 1
         Global.setPlayerGold = Global.getPlayerGold - this.g_price
     }
@@ -30,7 +31,7 @@ export default class ShopAutoWorker extends godot.Button {
     _process (delta): void {
         if (this.is_pressed() && Global.getPlayerGold >= this.g_price){
             this.set_disabled(true)
-            this.g_buyNewWorker()
+            this.g_newWorker()
         }
     } 
 

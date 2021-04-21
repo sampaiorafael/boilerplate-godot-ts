@@ -1,4 +1,5 @@
 import { signal, property, tool, onready, node, gdclass } from '../../../decorators';
+import Configs from '../configs/configs'
 
 export default class ButtonDisable extends godot.Timer {
 
@@ -18,7 +19,7 @@ export default class ButtonDisable extends godot.Timer {
         this.g_node_shopAutoWorker = this.$('../Shop-AutoWorker') as godot.Button
         this.g_node_shopManualStrength = this.$('../Shop-ManualStrength') as godot.Button
 
-        this.set_wait_time(0.1)
+        this.set_wait_time(Configs.ButtonDisable.speed)
         this.start() 
         this.connect('timeout', this, 'g_on_timeout')
     }

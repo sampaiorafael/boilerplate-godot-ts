@@ -1,11 +1,11 @@
 import { signal, property, tool, onready, node } from '../../../decorators';
-
+import Configs from '../configs/configs'
 export default class ManualFarm extends godot.Button {
 
     @signal
     public readonly manualIncrease: string
 
-    public static g_strength: number = 10
+    public static g_strength: number = Configs.ManualFarm.initialStrength
 
     static set setManualFarmStrength (value: number) {
         ManualFarm.g_strength = value
