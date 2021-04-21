@@ -3,8 +3,8 @@ import Configs from '../configs/configs'
 import Global from '../global/Global'
 
 export default class ProgressBar extends godot.ProgressBar {
-
-    public g_on_manual_increase (value: number): void {this.g_increase_progress(value)}
+    
+    public g_on_manual_increase (value: number): void {this.g_increase_progress(value * 1)}
     public g_on_auto_worker_increase (value: number): void {this.g_increase_progress(value)}
 
     public g_configs (): void {
