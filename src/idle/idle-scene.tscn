@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/idle/idle-scene.jsx" type="Script" id=1]
 [ext_resource path="res://assets/picareta.png" type="Texture" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://src/idle/farm-button/farmButton.jsx" type="Script" id=5]
 [ext_resource path="res://fonts/AlegreyaSans-Black.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://src/idle/gold-label/GoldLabel.jsx" type="Script" id=7]
-[ext_resource path="res://src/idle/farm-button-interval/FarmButtonInterval.jsx" type="Script" id=8]
 [ext_resource path="res://src/idle/shop-btn-farmStrength/Shop-Btn-FarmStrength.jsx" type="Script" id=9]
 [ext_resource path="res://src/idle/shop-btn-autoWorker/shop-btn-autoWorker.jsx" type="Script" id=10]
 
@@ -33,10 +32,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="farm-button-interval" type="Timer" parent="."]
-wait_time = 0.1
-script = ExtResource( 8 )
-
 [node name="mine-progress" type="ProgressBar" parent="."]
 anchor_right = 1
 anchor_bottom = 1
@@ -45,6 +40,7 @@ margin_top = 330
 margin_right = 376.293
 margin_bottom = 460
 step = 0.01
+value = 23.0
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -53,12 +49,12 @@ __meta__ = {
 [node name="gold-label" type="Label" parent="."]
 anchor_right = 1
 anchor_bottom = 1
-margin_left = 487.394
-margin_top = 44.5866
-margin_right = 518.394
-margin_bottom = 116.587
+margin_left = 448.394
+margin_top = 46.5866
+margin_right = 529.394
+margin_bottom = 118.587
 custom_fonts/font = SubResource( 1 )
-text = "0"
+text = "160"
 align = 2
 script = ExtResource( 7 )
 __meta__ = {
@@ -80,9 +76,6 @@ margin_right = 684.597
 margin_bottom = 168.997
 text = "+1 STR = 10G"
 script = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="shop-btn-autoWorker" type="Button" parent="."]
 margin_left = 555
@@ -91,9 +84,4 @@ margin_right = 686
 margin_bottom = 198
 text = "AutoWorker = 50G"
 script = ExtResource( 10 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 [connection signal="click" from="farm-button" to="mine-progress" method="_on_farmbutton_click"]
-[connection signal="timeout" from="farm-button-interval" to="farm-button" method="_on_farmbuttoninterval_timeout"]
-[connection signal="complete" from="mine-progress" to="gold-label" method="_on_mineprogress_complete"]
