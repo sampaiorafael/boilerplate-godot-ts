@@ -4,6 +4,12 @@ export default {
         initialGold: 0
     },
 
+    ProgressBar: {
+        step: 0.01,
+        initialVal: 0,
+        showPerCent: true
+    },
+
     ManualFarm: {
         initialPrice: 1,
         initialStrength: 10
