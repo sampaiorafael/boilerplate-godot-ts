@@ -2,7 +2,7 @@ import { signal, property, tool, onready, node } from '../../../decorators';
 import Configs from '../configs/configs'
 import Global from '../global/Global'
 
-export default class MineProgress extends godot.ProgressBar {
+export default class ProgressBar extends godot.ProgressBar {
 
     public g_on_manual_increase (value: number): void {this.g_increase_progress(value)}
     public g_on_auto_worker_increase (value: number): void {this.g_increase_progress(value)}
@@ -31,8 +31,8 @@ export default class MineProgress extends godot.ProgressBar {
     }
     
 	_ready (): void {
-        this.$(`..${Configs.NodePath.ManualFarm}`).connect('g_manual_increase', this, 'g_on_manual_increase')
-        this.$(`..${Configs.NodePath.ShopAutoWorker}`).connect('g_auto_worker_increase', this, 'g_on_auto_worker_increase')
+        this.$(`../../${Configs.NodePath.ManualFarm}`).connect('g_manual_increase', this, 'g_on_manual_increase')
+        this.$(`../../${Configs.NodePath.ShopAutoWorker}`).connect('g_auto_worker_increase', this, 'g_on_auto_worker_increase')
         this.g_configs()
     }
 
