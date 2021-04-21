@@ -14,8 +14,8 @@ export default class ShopManualStrength extends godot.Button {
   
     _process (delta): void {
         if (this.is_pressed() && Global.get_player_gold >= this.g_price){
-            this.g_buy_manual_strength()
             this.set_disabled(true)
+            this.g_buy_manual_strength()
         }
     } 
 

@@ -17,8 +17,8 @@ export default class ManualFarm extends godot.Button {
     
     _process (delta): void {
         if (this.is_pressed()){
-            this.emit_signal('g_manual_increase', ManualFarm.g_strength)
             this.set_disabled(true)
+            this.emit_signal('g_manual_increase', ManualFarm.g_strength)
         }
     } 
 
