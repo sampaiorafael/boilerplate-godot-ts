@@ -1,0 +1,114 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://assets/floor.png" type="Texture" id=1]
+[ext_resource path="res://src/world/Scenario.jsx" type="Script" id=2]
+[ext_resource path="res://assets/player/elf_m_idle_anim_f3.png" type="Texture" id=3]
+[ext_resource path="res://assets/player/goblin_idle_anim_f3.png" type="Texture" id=4]
+[ext_resource path="res://assets/player/elf_m_idle_anim_f1.png" type="Texture" id=5]
+[ext_resource path="res://assets/player/goblin_idle_anim_f0.png" type="Texture" id=6]
+[ext_resource path="res://assets/player/goblin_idle_anim_f2.png" type="Texture" id=7]
+[ext_resource path="res://assets/player/elf_m_idle_anim_f0.png" type="Texture" id=8]
+[ext_resource path="res://assets/player/goblin_idle_anim_f1.png" type="Texture" id=9]
+[ext_resource path="res://assets/player/elf_m_idle_anim_f2.png" type="Texture" id=10]
+[ext_resource path="res://src/world/Player.jsx" type="Script" id=11]
+[ext_resource path="res://src/world/Enemy.jsx" type="Script" id=12]
+[ext_resource path="res://src/world/Stage.jsx" type="Script" id=13]
+[ext_resource path="res://src/world/SceneManager.jsx" type="Script" id=14]
+[ext_resource path="res://src/world/World.shader" type="Shader" id=15]
+[ext_resource path="res://assets/mask.png" type="Texture" id=16]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 15 )
+shader_param/cutoff = 0.0
+shader_param/smooth_size = 1.0
+shader_param/mask = ExtResource( 16 )
+
+[sub_resource type="Animation" id=4]
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/smooth_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.239 ]
+}
+
+[node name="Main" type="Node"]
+
+[node name="Stage" type="Node" parent="."]
+script = ExtResource( 13 )
+
+[node name="Grass" type="Node2D" parent="Stage"]
+
+[node name="Scenario1" type="Sprite" parent="Stage/Grass"]
+position = Vector2( 0, 160 )
+texture = ExtResource( 1 )
+centered = false
+script = ExtResource( 2 )
+
+[node name="Scenario2" type="Sprite" parent="Stage/Grass"]
+position = Vector2( 1400, 160 )
+scale = Vector2( 1, 0.5 )
+texture = ExtResource( 1 )
+centered = false
+script = ExtResource( 2 )
+
+[node name="Player" type="Node2D" parent="."]
+position = Vector2( 180, 350 )
+script = ExtResource( 11 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
+scale = Vector2( 3, 3 )
+frames = SubResource( 1 )
+animation = "idle"
+frame = 3
+playing = true
+
+[node name="Enemy" type="Node2D" parent="."]
+position = Vector2( 600, 350 )
+script = ExtResource( 12 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Enemy"]
+scale = Vector2( 3, 3 )
+frames = SubResource( 2 )
+animation = "Idle"
+frame = 2
+playing = true
+flip_h = true
+
+[node name="SceneManager" type="CanvasLayer" parent="."]
+script = ExtResource( 14 )
+
+[node name="ColorRect" type="ColorRect" parent="SceneManager"]
+material = SubResource( 3 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SceneManager/ColorRect"]
+anims/fade = SubResource( 4 )
+[connection signal="click" from="Player" to="Enemy" method="_on_player_attack"]
