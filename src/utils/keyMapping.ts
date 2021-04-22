@@ -14,5 +14,6 @@ export enum keyMapping {
     PAGE_UP = 'ui_page_up',
     PAGE_DOWN = 'ui_page_down',
     HOME = 'ui_home',
-    END = 'ui_end'
+    END = 'ui_end',
+    CLICK = 'ui_click'
 }
