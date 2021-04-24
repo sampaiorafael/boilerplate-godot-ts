@@ -11,6 +11,8 @@ export default class ShopDoubleSTR extends godot.Button {
     public g_timer: godot.Timer = new godot.Timer()
     public g_current_manual_farm_str: number
 
+    g_button_disable_shader: godot.ColorRect
+
     public g_on_timeout (): void {
         ShopAutoWorker.g_strength_multiplier -= 1
     }
@@ -25,6 +27,7 @@ export default class ShopDoubleSTR extends godot.Button {
     _ready (): void {
         this.g_node_shop_auto_worker = this.$(`..${Configs.NodePath.ShopAutoWorker}`) as godot.Button
         this.g_timer_configs()
+        this.g_button_disable_shader = this.$('./Shader') as godot.ColorRect
     }
 
     _process (delta): void {
@@ -33,6 +36,10 @@ export default class ShopDoubleSTR extends godot.Button {
             Global.g_set_player_gold = Global.g_get_player_gold - this.g_price
             ShopAutoWorker.g_strength_multiplier += 1
             this.g_timer.start()
+        }
+
+        if(Global.g_get_player_gold < this.g_price) {
+            this.g_button_disable_shader.visible = true;
         }
     } 
 
