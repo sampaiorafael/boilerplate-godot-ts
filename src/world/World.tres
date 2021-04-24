@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://assets/mask.png" type="Texture" id=1]
+[ext_resource path="res://src/world/World.shader" type="Shader" id=2]
+
+[resource]
+shader = ExtResource( 2 )
+shader_param/cutoff = 0.092
+shader_param/smooth_size = 0.621
+shader_param/mask = ExtResource( 1 )
